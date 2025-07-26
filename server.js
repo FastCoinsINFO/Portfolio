@@ -5,9 +5,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname))); // раздача index.html, login.html и др.
+app.use(express.static(path.join(__dirname)));
 
 app.use(session({
   secret: 'my-secret-key',
@@ -15,12 +14,15 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// Страница входа
+// Простая база пользователей (в памяти)
+const users = [];
+
+// LOGIN
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
+  const user = users.find(u => u.username === username && u.password === password);
 
-  // Простой фейк-логин, позже заменим на базу
-  if (username === 'admin' && password === '1234') {
+  if (user) {
     req.session.user = username;
     res.send(`<h2>Welcome, ${username}!</h2><a href="/">Go Home</a>`);
   } else {
@@ -28,7 +30,19 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Запуск сервера
+// REGISTER
+app.post('/register', (req, res) => {
+  const { username, password } = req.body;
+  const exists = users.find(u => u.username === username);
+
+  if (exists) {
+    res.send('<h2>User already exists</h2><a href="register.html">Try again</a>');
+  } else {
+    users.push({ username, password });
+    res.send(`<h2>Account created for ${username}</h2><a href="login.html">Login now</a>`);
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
