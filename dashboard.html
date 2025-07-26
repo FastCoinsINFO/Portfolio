@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="dashboard"></div>
+
+  <script>
+    const username = localStorage.getItem('loggedInUser');
+    if (!username) {
+      window.location.href = 'login.html';
+    } else {
+      document.getElementById('dashboard').innerHTML = `
+        <h2>Welcome, ${username}!</h2>
+        <button onclick="logout()">Logout</button>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
