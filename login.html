@@ -7,24 +7,79 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f7f9fb;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Фоновое изображение с блюром */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("background.png");
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      z-index: -1;
+      opacity: 0.6;
+    }
+
     form {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.9);
       padding: 2rem;
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      width: 300px;
+      z-index: 1;
     }
+
     input {
       display: block;
       width: 100%;
       margin-bottom: 1rem;
       padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    button {
+      flex: 1;
+      background-color: #007acc;
+      color: white;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    .cancel {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .cancel:hover {
+      background-color: #aaa;
     }
   </style>
 </head>
@@ -33,7 +88,12 @@
     <h2>Login</h2>
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Sign in</button>
+
+    <div class="buttons">
+      <button type="submit">Sign in</button>
+      <button type="button" onclick="window.location.href='register.html'">Register</button>
+      <button type="button" class="cancel" onclick="window.location.href='index.html'">Cancel</button>
+    </div>
   </form>
 </body>
 </html>
