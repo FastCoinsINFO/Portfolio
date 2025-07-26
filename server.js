@@ -5,50 +5,30 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Hardcoded credentials for demo purposes
-const USERNAME = 'admin';
-const PASSWORD = 'password';
-
+// Middleware
 app.use(express.urlencoded({ extended: true }));
-app.use(
-  session({
-    secret: 'portfolio-secret',
-    resave: false,
-    saveUninitialized: false,
-  })
-);
+app.use(express.static(path.join(__dirname))); // раздача index.html, login.html и др.
 
-function authMiddleware(req, res, next) {
-  if (req.session && req.session.user) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-}
+app.use(session({
+  secret: 'my-secret-key',
+  resave: false,
+  saveUninitialized: true
+}));
 
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
-});
-
+// Страница входа
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === USERNAME && password === PASSWORD) {
+
+  // Простой фейк-логин, позже заменим на базу
+  if (username === 'admin' && password === '1234') {
     req.session.user = username;
-    return res.redirect('/');
+    res.send(`<h2>Welcome, ${username}!</h2><a href="/">Go Home</a>`);
+  } else {
+    res.send('<h2>Invalid login</h2><a href="login.html">Try again</a>');
   }
-  res.redirect('/login');
 });
 
-app.get('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/login');
-  });
-});
-
-app.get('/', authMiddleware, (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
+// Запуск сервера
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
