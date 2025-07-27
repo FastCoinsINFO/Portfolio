@@ -8,38 +8,52 @@
   <style>
     body {
       margin: 0;
-      padding: 2rem;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #f7f9fb;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
     }
 
-    .container {
-      background-color: rgba(255, 255, 255, 0.85);
+    .glass-box {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+      border-radius: 24px;
+      backdrop-filter: blur(30px) saturate(180%) contrast(130%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%) contrast(130%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3), 0 4px 20px rgba(0, 0, 0, 0.2);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 100%;
+      width: 90%;
       max-width: 400px;
       box-sizing: border-box;
     }
 
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+    }
+
     input {
-      display: block;
-      width: 100%;
       margin-bottom: 1rem;
       padding: 0.5rem;
-      box-sizing: border-box;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
     }
 
     button {
-      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
-      background-color: #4a90e2;
+      background-color: rgba(74, 144, 226, 0.9);
       color: white;
       border: none;
       border-radius: 4px;
@@ -47,18 +61,17 @@
     }
 
     button:hover {
-      background-color: #357ab8;
+      background-color: rgba(53, 122, 184, 0.9);
     }
 
     #login-msg {
-      margin-top: 0.5rem;
       color: red;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="glass-box">
     <form onsubmit="login(event)">
       <h2>Login</h2>
       <input type="text" id="login-username" placeholder="Username" required />
