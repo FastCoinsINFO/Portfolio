@@ -6,6 +6,28 @@
   <title>Pavlo Yevtushenko — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
     .avatar {
       width: 150px;
       height: 150px;
@@ -15,19 +37,33 @@
       display: block;
       box-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
+
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #357ab8;
+    }
   </style>
 </head>
 <body>
-  <div class="content">
+  <div class="container">
     <h2>Welcome to my Portfolio</h2>
 
-    <!-- Фото -->
     <img src="avatar.jpeg" alt="Pavlo Yevtushenko" class="avatar" />
 
     <p>I’m Pavlo Yevtushenko — a junior fullstack developer interested in backend, Web3 and Telegram mini-apps.</p>
 
-    <button type="button" onclick="window.location.href='login.html'">Login</button>
-    <button type="button" onclick="window.location.href='register.html'">Register</button>
+    <button onclick="window.location.href='login.html'">Login</button>
+    <button onclick="window.location.href='register.html'">Register</button>
   </div>
 </body>
 </html>
