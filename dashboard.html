@@ -80,4 +80,35 @@ contract FastCoins {
     }
 }`;
 
-      document.getElementById('dashboard').inner
+      document.getElementById('dashboard').innerHTML = `
+        <form>
+          <h2>Welcome, ${username}!</h2>
+
+          <h3>💰 Project: FastCoins (FSC)</h3>
+          <p>
+            FastCoins (FSC) is a cryptocurrency token I created using <strong>Solidity</strong> and deployed on the <strong>BNB Smart Chain (BSC)</strong>.
+            It is used in Web3 games, Telegram Mini Apps, and DeFi products.
+          </p>
+
+          <p><strong>📜 Token Smart Contract:</strong></p>
+          <pre><code class="language-solidity">${contractCode}</code></pre>
+
+          <button type="button" onclick="window.open('https://fastcoinsinfo.github.io/fastcoins-site/', '_blank')">
+            🌐 Project Website
+          </button>
+
+          <button type="button" onclick="logout()" style="margin-top: 1rem;">🚪 Logout</button>
+        </form>
+      `;
+    }
+
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    }
+
+    // 🌈 Активируем подсветку после загрузки
+    window.onload = () => hljs.highlightAll();
+  </script>
+</body>
+</html>
