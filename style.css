@@ -19,13 +19,18 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f7f9fb;
   color: #333;
-  height: 100vh;
+  min-height: 100vh; /* заменено с height */
   overflow-y: auto;
 }
 
-.container {
+.container, #dashboard {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 h2, h3 {
@@ -60,15 +65,16 @@ button:hover {
   background-color: #357ab8;
 }
 
-
-#login-msg, #register-msg {
+#login-msg,
+#register-msg {
   text-align: center;
   color: red;
   margin-top: 0.5rem;
 }
 
 @media (max-width: 500px) {
-  form, #dashboard {
+  .container,
+  #dashboard {
     width: 90%;
     padding: 1.5rem;
   }
