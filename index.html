@@ -5,11 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pavlo Yevtushenko — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 1rem auto;
+      display: block;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
   <div class="content">
     <h2>Welcome to my Portfolio</h2>
+
+    <!-- Фото -->
+    <img src="avatar.jpeg" alt="Pavlo Yevtushenko" class="avatar" />
+
     <p>I’m Pavlo Yevtushenko — a junior fullstack developer interested in backend, Web3 and Telegram mini-apps.</p>
+
     <button type="button" onclick="window.location.href='login.html'">Login</button>
     <button type="button" onclick="window.location.href='register.html'">Register</button>
   </div>
