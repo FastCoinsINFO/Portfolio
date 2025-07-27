@@ -6,16 +6,28 @@
   <title>Pavlo Yevtushenko — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .glass-box {
       max-width: 600px;
-      margin: 5vh auto;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(25px) saturate(180%) contrast(120%);
+      -webkit-backdrop-filter: blur(25px) saturate(180%) contrast(120%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
       text-align: center;
+      color: #fff;
     }
     .avatar {
       width: 150px;
@@ -24,20 +36,21 @@
       object-fit: cover;
       margin: 1rem auto;
       display: block;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      box-shadow: 0 0 12px rgba(255,255,255,0.4);
     }
     button {
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
-      background-color: #4a90e2;
+      background-color: rgba(74, 144, 226, 0.9);
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #357ab8;
+      background-color: rgba(53, 122, 184, 0.9);
     }
   </style>
 </head>
@@ -46,6 +59,11 @@
     <h2>Welcome to my Portfolio</h2>
     <img src="avatar.jpeg" alt="Pavlo Yevtushenko" class="avatar" />
     <p>I’m Pavlo Yevtushenko — a junior fullstack developer interested in backend, Web3 and Telegram mini-apps.</p>
+    <p style="margin-top: 1.5rem; font-size: 0.95rem;">
+      Since the age of 15, I've been passionate about programming. As a teenager, I used to reflash phones and modify firmware.
+      I studied HTML and could build websites without constructors. To this day, I'm deeply involved in IT and currently learning backend development with the help of ChatGPT.
+      I also have a project written in Solidity. My dream is to join a strong team of developers and become the best in my field.
+    </p>
     <p><em>To see more information, please register.</em></p>
     <button type="button" onclick="window.location.href='login.html'">Login</button>
     <button type="button" onclick="window.location.href='register.html'">Register</button>
