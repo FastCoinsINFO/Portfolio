@@ -1,4 +1,3 @@
-/* Основной фон с блюром */
 body::before {
   content: "";
   position: fixed;
@@ -14,7 +13,6 @@ body::before {
   opacity: 0.6;
 }
 
-/* Общий стиль */
 body {
   margin: 0;
   padding: 0;
@@ -26,7 +24,6 @@ body {
   overflow: hidden;
 }
 
-/* Центрированная форма */
 form, #dashboard {
   background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
@@ -37,14 +34,12 @@ form, #dashboard {
   z-index: 1;
 }
 
-/* Заголовок */
 form h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-/* Поля ввода */
 input {
   display: block;
   width: 100%;
@@ -56,7 +51,6 @@ input {
   box-sizing: border-box;
 }
 
-/* Кнопка */
 button {
   width: 100%;
   background-color: #007acc;
@@ -67,20 +61,19 @@ button {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-bottom: 0.5rem;
 }
 
 button:hover {
   background-color: #005fa3;
 }
 
-/* Сообщения */
 #login-msg, #register-msg {
   text-align: center;
   color: red;
   margin-top: 0.5rem;
 }
 
-/* Адаптивность */
 @media (max-width: 500px) {
   form, #dashboard {
     width: 90%;
