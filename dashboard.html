@@ -6,26 +6,58 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- 🔥 Highlight.js CDN -->
+  <!-- Highlight.js для подсветки -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/solidity.min.js"></script>
 
   <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2, h3 {
+      color: #1a1a1a;
+    }
+
     pre {
       background-color: #1e1e1e;
       color: #eee;
       padding: 1rem;
       border-radius: 8px;
       overflow-x: auto;
-      max-height: 400px;
       font-size: 0.85rem;
-      margin-bottom: 2rem;
+      white-space: pre;
+    }
+
+    button {
+      margin-top: 1rem;
+      margin-right: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #357ab8;
     }
   </style>
 </head>
 <body>
-  <div id="dashboard"></div>
+  <div class="container" id="dashboard"></div>
 
   <script>
     const username = localStorage.getItem('loggedInUser');
@@ -81,24 +113,19 @@ contract FastCoins {
 }`;
 
       document.getElementById('dashboard').innerHTML = `
-        <form>
-          <h2>Welcome, ${username}!</h2>
+        <h2>Welcome, ${username}!</h2>
 
-          <h3>💰 Project: FastCoins (FSC)</h3>
-          <p>
-            FastCoins (FSC) is a cryptocurrency token I created using <strong>Solidity</strong> and deployed on the <strong>BNB Smart Chain (BSC)</strong>.
-            It is used in Web3 games, Telegram Mini Apps, and DeFi products.
-          </p>
+        <h3>💰 Project: FastCoins (FSC)</h3>
+        <p>
+          FastCoins (FSC) is a cryptocurrency token I created using <strong>Solidity</strong> and deployed on the <strong>BNB Smart Chain (BSC)</strong>.
+          It is used in Web3 games, Telegram Mini Apps, and DeFi products.
+        </p>
 
-          <p><strong>📜 Token Smart Contract:</strong></p>
-          <pre><code class="language-solidity">${contractCode}</code></pre>
+        <h4>📜 Smart Contract (Solidity)</h4>
+        <pre><code class="language-solidity">${contractCode}</code></pre>
 
-          <button type="button" onclick="window.open('https://fastcoinsinfo.github.io/fastcoins-site/', '_blank')">
-            🌐 Project Website
-          </button>
-
-          <button type="button" onclick="logout()" style="margin-top: 1rem;">🚪 Logout</button>
-        </form>
+        <button onclick="window.open('https://fastcoinsinfo.github.io/fastcoins-site/', '_blank')">🌐 Project Website</button>
+        <button onclick="logout()">🚪 Logout</button>
       `;
     }
 
@@ -107,7 +134,6 @@ contract FastCoins {
       window.location.href = 'login.html';
     }
 
-    // 🌈 Активируем подсветку после загрузки
     window.onload = () => hljs.highlightAll();
   </script>
 </body>
